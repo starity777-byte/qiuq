@@ -92,3 +92,6 @@ All assets were graded and recolored using Python Pillow (PIL) to strictly adher
 2. **Subtle Texture Blending**: The recolored gradient ramp was blended with original luminance information (80-85% recolor ramp, 15-20% high-frequency structure) to preserve crisp water droplet rims and micro-textures.
 3. **High-Key Luminous Grading**: Brightness and contrast curves were calibrated to produce an airy, low-saturation, high-key Japanese aesthetic inspired by Makoto Shinkai's luminous color direction.
 4. **Compression Optimization**: Output as progressive/optimized JPEGs with quality levels between 88 and 92, ensuring every asset remains well under the 600 KB limit.
+
+## Google Drive 前端/素材 (2026-10-13)
+wallpaper.jpg=…18_31_56, wallpaper_night.jpg=…18_31_34, photo.jpg=…18_30_49, album.jpg=…18_31_11, avatar.jpg=crop of …18_31_20; drive_1/3/5/8/9.jpg = remaining originals (compressed).
