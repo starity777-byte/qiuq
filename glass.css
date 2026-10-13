@@ -1,0 +1,472 @@
+/* Liquid glass + frosted surfaces for QiuQ. Night tints live on body.glass-night. */
+
+:root {
+  --glass-blur: 18px;
+  --glass-sat: 1.75;
+  --glass-hi: rgba(255, 255, 255, 0.96);
+  --glass-rim: rgba(255, 255, 255, 0.62);
+  --glass-sky: rgba(121, 167, 217, 0.34);
+  --glass-lilac: rgba(154, 142, 195, 0.28);
+  --glass-drop: 0 14px 32px rgba(121, 167, 217, 0.24), 0 3px 10px rgba(154, 142, 195, 0.14);
+  --switch-w: 112px;
+  --switch-h: 38px;
+  --knob: 30px;
+  --knob-inset: 3px;
+  --knob-travel: calc(var(--switch-w) - var(--knob) - (var(--knob-inset) * 2) - 2px);
+}
+
+.screen {
+  padding-top: 56px;
+}
+
+.edge {
+  top: 18px;
+}
+
+.glass-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Shared thick-glass material: frost, layered tint, specular rim, inner glow. */
+.glass,
+.sheet {
+  isolation: isolate;
+  background:
+    radial-gradient(120% 70% at 18% 0%, rgba(255, 255, 255, 0.72), transparent 46%),
+    linear-gradient(168deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.28) 28%, rgba(226, 219, 237, 0.22) 58%, rgba(121, 167, 217, 0.16) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    var(--glass-drop),
+    inset 0 1.5px 0 var(--glass-hi),
+    inset 0 -1.5px 0 rgba(255, 255, 255, 0.42),
+    inset 1.5px 0 0 rgba(255, 255, 255, 0.38),
+    inset -1.5px 0 0 rgba(255, 255, 255, 0.32),
+    inset 0 0 22px rgba(255, 255, 255, 0.32),
+    inset 0 -16px 22px var(--glass-lilac);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) brightness(1.06);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat)) brightness(1.06);
+}
+
+.glass {
+  position: relative;
+}
+
+.glass::before,
+.sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.55) 12%,
+    rgba(255, 255, 255, 0.08) 34%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(121, 167, 217, 0.42) 74%,
+    rgba(255, 255, 255, 0.78) 100%
+  );
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.glass::after,
+.sheet::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 0;
+  z-index: -1;
+  height: 42%;
+  border-radius: 0 0 46% 46%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.12) 48%, transparent 100%);
+  pointer-events: none;
+}
+
+.dock {
+  -webkit-backdrop-filter: blur(22px) saturate(1.9) brightness(1.08);
+  backdrop-filter: blur(22px) saturate(1.9) brightness(1.08);
+  box-shadow:
+    0 16px 34px rgba(121, 167, 217, 0.26),
+    0 2px 8px rgba(154, 142, 195, 0.14),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 1px 0 0 rgba(255, 255, 255, 0.36),
+    inset -1px 0 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 18px rgba(255, 255, 255, 0.34),
+    inset 0 -12px 18px rgba(154, 142, 195, 0.22);
+}
+
+.icon-face {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.42) 26%, transparent 48%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.78) 0%, rgba(226, 219, 237, 0.42) 48%, rgba(121, 167, 217, 0.32) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 10px 18px rgba(121, 167, 217, 0.28),
+    0 1px 3px rgba(154, 142, 195, 0.16),
+    inset 0 1.5px 0 #ffffff,
+    inset 0 -8px 12px rgba(154, 142, 195, 0.28),
+    inset 0 0 12px rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(1.7) brightness(1.06);
+  backdrop-filter: blur(12px) saturate(1.7) brightness(1.06);
+}
+
+.icon-face::before {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  top: 3px;
+  z-index: 0;
+  height: 42%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.icon-face .ico,
+.icon-face svg {
+  position: relative;
+  z-index: 1;
+}
+
+.app:active .icon-face,
+.app.is-pressed .icon-face {
+  box-shadow:
+    0 3px 8px rgba(121, 167, 217, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -5px 8px rgba(154, 142, 195, 0.28);
+}
+
+.pill,
+.chip,
+.play,
+.close-btn {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.78), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(226, 219, 237, 0.38));
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 6px 14px rgba(121, 167, 217, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -6px 8px rgba(154, 142, 195, 0.16),
+    inset 0 0 8px rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: blur(10px) saturate(1.55);
+  backdrop-filter: blur(10px) saturate(1.55);
+}
+
+/* Thick glossy capsule, Pixso-style liquid glass. */
+.glass-switch {
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  width: var(--switch-w);
+  height: var(--switch-h);
+  margin-inline: auto;
+  padding: 0;
+  border-radius: 999px;
+  isolation: isolate;
+  color: var(--ink);
+  background:
+    radial-gradient(90% 80% at 50% 0%, rgba(255, 255, 255, 0.75), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0.24) 42%, rgba(154, 142, 195, 0.22) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 10px 22px rgba(121, 167, 217, 0.3),
+    0 2px 6px rgba(154, 142, 195, 0.16),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -2px 1px rgba(255, 255, 255, 0.4),
+    inset 0 8px 12px rgba(255, 255, 255, 0.28),
+    inset 0 -10px 14px rgba(121, 167, 217, 0.22);
+  -webkit-backdrop-filter: blur(16px) saturate(1.85) brightness(1.08);
+  backdrop-filter: blur(16px) saturate(1.85) brightness(1.08);
+  animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) 1.88s both;
+}
+
+.glass-switch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.15) 38%, rgba(121, 167, 217, 0.35) 100%);
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.glass-switch-word {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 58px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+.glass-switch-word[data-light] {
+  right: 4px;
+}
+
+.glass-switch-word[data-night] {
+  left: 4px;
+  display: none;
+}
+
+.glass-switch-knob {
+  position: absolute;
+  top: var(--knob-inset);
+  left: var(--knob-inset);
+  z-index: 2;
+  width: var(--knob);
+  height: var(--knob);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, #ffffff 0%, rgba(255, 255, 255, 0.72) 22%, transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(226, 219, 237, 0.72) 52%, rgba(154, 142, 195, 0.62) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 5px 12px rgba(121, 167, 217, 0.38),
+    inset 0 1px 1px #ffffff,
+    inset 0 -7px 8px rgba(154, 142, 195, 0.38),
+    inset 0 0 8px rgba(255, 255, 255, 0.65);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-switch-knob::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 13px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  filter: blur(0.3px);
+}
+
+body.glass-night .glass-switch-knob {
+  transform: translateX(var(--knob-travel));
+  background:
+    radial-gradient(circle at 32% 26%, #ffffff 0%, rgba(255, 255, 255, 0.45) 20%, transparent 44%),
+    linear-gradient(185deg, #f7f4ff 0%, #c9d9f2 48%, #9a8ec3 100%);
+}
+
+.glass-switch:active .glass-switch-knob {
+  transform: scale(0.94);
+}
+
+body.glass-night .glass-switch:active .glass-switch-knob {
+  transform: translateX(var(--knob-travel)) scale(0.94);
+}
+
+.glass-switch:focus-visible {
+  outline: 2px solid #79a7d9;
+  outline-offset: 3px;
+}
+
+body.glass-night .glass-switch-word[data-light] {
+  display: none;
+}
+
+body.glass-night .glass-switch-word[data-night] {
+  display: grid;
+}
+
+/* Refraction. Safe frost is declared first; the url() line is ignored if unsupported. */
+.glass-refract {
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  -webkit-backdrop-filter: blur(12px) saturate(1.85) url("#qiuq-refract");
+  backdrop-filter: blur(12px) saturate(1.85) url("#qiuq-refract");
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .sheet,
+  .icon-face,
+  .glass-switch,
+  .pill,
+  .chip,
+  .play,
+  .close-btn {
+    background-color: rgba(255, 255, 255, 0.86);
+  }
+}
+
+body.glass-night {
+  --ink: #f6f3fc;
+  --muted: #ddd6ee;
+  --line: #f3eefb;
+  --blue-ink: #d7e6f8;
+  color: var(--ink);
+  color-scheme: dark;
+}
+
+body.glass-night::after {
+  background:
+    radial-gradient(ellipse 70% 42% at 50% -8%, rgba(154, 142, 195, 0.28), transparent 62%),
+    radial-gradient(ellipse 48% 36% at 100% 18%, rgba(121, 167, 217, 0.2), transparent 68%),
+    radial-gradient(ellipse 60% 40% at 20% 100%, rgba(90, 70, 140, 0.35), transparent 70%),
+    linear-gradient(180deg, rgba(18, 14, 36, 0.62), rgba(22, 18, 44, 0.66) 48%, rgba(16, 12, 32, 0.72));
+}
+
+body.glass-night .glass,
+body.glass-night .sheet {
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgba(226, 219, 237, 0.28), transparent 46%),
+    linear-gradient(168deg, rgba(92, 78, 140, 0.42) 0%, rgba(36, 28, 68, 0.5) 46%, rgba(18, 14, 40, 0.58) 100%);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 16px 34px rgba(6, 4, 16, 0.46),
+    0 2px 8px rgba(0, 0, 0, 0.24),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.14),
+    inset 1px 0 0 rgba(255, 255, 255, 0.12),
+    inset -1px 0 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 22px rgba(121, 167, 217, 0.16),
+    inset 0 -14px 20px rgba(18, 12, 36, 0.35);
+  -webkit-backdrop-filter: blur(20px) saturate(1.45) brightness(0.78);
+  backdrop-filter: blur(20px) saturate(1.45) brightness(0.78);
+}
+
+body.glass-night .glass::before,
+body.glass-night .sheet::before {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.22) 16%,
+    rgba(255, 255, 255, 0.04) 40%,
+    rgba(121, 167, 217, 0.28) 74%,
+    rgba(226, 219, 237, 0.4) 100%
+  );
+}
+
+body.glass-night .glass::after,
+body.glass-night .sheet::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04) 50%, transparent);
+}
+
+body.glass-night .dock {
+  -webkit-backdrop-filter: blur(24px) saturate(1.5) brightness(0.76);
+  backdrop-filter: blur(24px) saturate(1.5) brightness(0.76);
+}
+
+body.glass-night .icon-face {
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.08) 28%, transparent 48%),
+    linear-gradient(165deg, rgba(120, 108, 168, 0.55) 0%, rgba(36, 28, 68, 0.62) 100%);
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #f4f0fb;
+  box-shadow:
+    0 10px 18px rgba(6, 4, 16, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -8px 12px rgba(10, 8, 24, 0.35),
+    inset 0 0 12px rgba(121, 167, 217, 0.18);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4) brightness(0.86);
+  backdrop-filter: blur(12px) saturate(1.4) brightness(0.86);
+}
+
+body.glass-night .icon-face::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+}
+
+body.glass-night .label {
+  text-shadow: 0 1px 2px rgba(8, 6, 18, 0.55);
+}
+
+body.glass-night .glass-switch {
+  color: #f6f3fc;
+  background:
+    radial-gradient(90% 80% at 50% 0%, rgba(226, 219, 237, 0.28), transparent 58%),
+    linear-gradient(180deg, rgba(110, 98, 160, 0.42) 0%, rgba(28, 22, 54, 0.62) 52%, rgba(14, 10, 30, 0.7) 100%);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 12px 24px rgba(4, 2, 12, 0.5),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 1px rgba(255, 255, 255, 0.12),
+    inset 0 0 16px rgba(121, 167, 217, 0.16),
+    inset 0 -10px 14px rgba(8, 6, 20, 0.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5) brightness(0.8);
+  backdrop-filter: blur(16px) saturate(1.5) brightness(0.8);
+}
+
+body.glass-night .pill,
+body.glass-night .chip,
+body.glass-night .play,
+body.glass-night .close-btn {
+  color: #f6f3fc;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.22), transparent 58%),
+    linear-gradient(180deg, rgba(98, 86, 146, 0.48), rgba(28, 22, 52, 0.55));
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 6px 14px rgba(4, 2, 12, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -6px 8px rgba(8, 6, 18, 0.28);
+}
+
+body.glass-night .chip {
+  color: #3f3958;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.85), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(226, 219, 237, 0.62));
+}
+
+body.glass-night .track {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+body.glass-night .grip {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+body.glass-night .sheet-backdrop {
+  background: rgba(12, 10, 28, 0.46);
+}
+
+body.glass-night.glass-refract,
+body.glass-night .glass-refract {
+  -webkit-backdrop-filter: blur(18px) saturate(1.4) brightness(0.8);
+  backdrop-filter: blur(18px) saturate(1.4) brightness(0.8);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5) brightness(0.82) url("#qiuq-refract");
+  backdrop-filter: blur(14px) saturate(1.5) brightness(0.82) url("#qiuq-refract");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-switch,
+  .glass-switch-knob {
+    animation: none;
+    transition: none;
+  }
+}
