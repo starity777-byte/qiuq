@@ -1,0 +1,184 @@
+/* Edit mode for QiuQ. The phone screen stays put; these controls float at its top-right. */
+
+.qiuq-tools {
+  position: fixed;
+  z-index: 8;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  top: max(8px, calc((100vh - 844px) / 2 + 8px));
+  right: max(8px, calc((100vw - 390px) / 2 + 8px));
+  pointer-events: none;
+}
+
+.qiuq-tools[hidden] {
+  display: none !important;
+}
+
+.qiuq-tools button {
+  pointer-events: auto;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, #ffffff, #e2dbed);
+  color: #3f3958;
+  font-family: "Noto Sans CJK SC", "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  box-shadow: 0 6px 16px rgba(154, 142, 195, 0.28);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.qiuq-tools button[hidden] {
+  display: none !important;
+}
+
+.qiuq-tools button:active {
+  transform: scale(0.97);
+}
+
+.qiuq-tools button:focus-visible {
+  outline: 2px solid #79a7d9;
+  outline-offset: 3px;
+}
+
+#qiuq-file {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#qiuq-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#qiuq-wallpaper[hidden] {
+  display: none !important;
+}
+
+.lyrics,
+.player,
+.avatar {
+  position: relative;
+}
+
+.qiuq-diy-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  border-radius: inherit;
+  -webkit-user-drag: none;
+}
+
+.avatar {
+  overflow: hidden;
+}
+
+.hero-label,
+.day-label {
+  min-width: 0;
+}
+
+body.is-editing {
+  overscroll-behavior: none;
+}
+
+body.is-editing .screen {
+  touch-action: none;
+}
+
+body.is-editing .screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(154, 142, 195, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(154, 142, 195, 0.16) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+body.is-editing [data-id] {
+  animation: qiuq-wiggle 0.32s ease-in-out infinite;
+  animation-delay: calc(var(--wiggle, 0) * -70ms);
+  touch-action: none;
+  cursor: grab;
+  outline: 1px dashed rgba(121, 167, 217, 0.9);
+  outline-offset: 1px;
+  -webkit-touch-callout: none;
+}
+
+body.is-editing [data-id].is-lifting,
+body.is-editing [data-id].is-quiet {
+  animation: none;
+  cursor: grabbing;
+}
+
+body.is-editing [data-id].is-lifting {
+  transform: scale(1.03);
+  box-shadow: 0 16px 32px rgba(121, 167, 217, 0.35);
+}
+
+body.is-editing [contenteditable="true"] {
+  cursor: text;
+  user-select: text;
+  -webkit-user-select: text;
+  outline: none;
+  box-shadow: inset 0 -1px 0 rgba(121, 167, 217, 0.85);
+  min-width: 0.6em;
+  min-height: 1em;
+  border-radius: 4px;
+}
+
+.qiuq-handle {
+  display: none;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #79a7d9;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(154, 142, 195, 0.45);
+  z-index: 6;
+  touch-action: none;
+}
+
+body.is-editing .qiuq-widget > .qiuq-handle {
+  display: block;
+}
+
+.qiuq-handle-nw { top: 4px; left: 4px; cursor: nwse-resize; }
+.qiuq-handle-ne { top: 4px; right: 4px; cursor: nesw-resize; }
+.qiuq-handle-sw { bottom: 4px; left: 4px; cursor: nesw-resize; }
+.qiuq-handle-se { bottom: 4px; right: 4px; cursor: nwse-resize; }
+
+@keyframes qiuq-wiggle {
+  0%,
+  100% { transform: rotate(-1.15deg); }
+  50% { transform: rotate(1.15deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.is-editing [data-id] {
+    animation: none;
+  }
+}
