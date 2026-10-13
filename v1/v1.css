@@ -1,0 +1,50 @@
+/* QiuQ v1 — first-version look (painted sky, cursive lyrics, labelled dock) */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@500;600;700&display=swap");
+:root{--v1-script:"Cormorant Garamond","Noto Serif",serif;--v1-round:"Nunito","Noto Sans",sans-serif;}
+body{background:linear-gradient(170deg,#f4f0f8 0%,#e9e4f3 40%,#dcd8ee 75%,#d2d3ec 100%)!important;}
+.screen{grid-template-rows:262fr 160fr 300fr 92fr;font-family:var(--v1-round);}
+.glass{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.85);border-radius:26px;box-shadow:0 10px 26px rgba(120,110,170,.16),inset 0 1px 0 #fff;}
+/* painted sky */
+.photo{border-radius:30px!important;overflow:hidden;background:
+ radial-gradient(circle at 76% 22%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.45) 12%,transparent 30%),
+ linear-gradient(200deg,transparent 38%,rgba(255,255,255,.28) 40%,transparent 46%),
+ linear-gradient(180deg,#8fa2d8 0%,#a9b6e3 40%,#b7b3e0 62%,#8e86c4 100%)!important;}
+.photo .sun{position:absolute;right:20%;top:16%;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 0 18px 8px rgba(255,255,255,.75);}
+.photo .cloud{position:absolute;height:14px;border-radius:14px;background:linear-gradient(#fff,#e7e9f8);box-shadow:0 3px 8px rgba(90,90,160,.18);}
+.photo .cloud::before{content:"";position:absolute;left:22%;top:-9px;width:46%;height:18px;border-radius:50%;background:#fff;}
+.photo .c1{left:2%;top:30%;width:44%}.photo .c2{left:44%;top:46%;width:46%}.photo .c3{left:16%;top:60%;width:42%}
+.photo .hill{position:absolute;left:-10%;right:-10%;bottom:0;height:34%;background:
+ radial-gradient(ellipse at 30% 0%,#7f78bd 0 55%,transparent 56%),linear-gradient(#8a82c4,#7a72b6);border-radius:60% 60% 0 0/40% 40% 0 0;opacity:.85;}
+.photo .chip{left:12px;bottom:12px;background:none!important;border:0!important;box-shadow:none!important;padding:0;font-family:var(--v1-script);font-style:italic;font-size:12px;color:#fff;}
+.photo .spark-note{display:none}
+/* lyrics */
+.lyrics{padding:12px 14px!important;}
+.pills{display:flex;align-items:center;gap:8px}
+.pill.dots{display:inline-flex;gap:4px;padding:4px 8px;border-radius:12px;background:#fff;box-shadow:0 2px 6px rgba(120,110,170,.15);margin-right:auto}
+.pill.dots i{width:7px;height:7px;border-radius:50%;background:#9a8ec3}.pill.dots i:nth-child(1){background:#7f7fc9}.pill.dots i:nth-child(2){background:#9a8ec3}.pill.dots i:nth-child(3){background:#c7b4e0}
+.pill-ico{color:#a29dc4;font-size:13px}
+.lyric-list{gap:18px!important;margin-top:14px}
+.lyric{display:block!important;border:0!important;padding:0!important}
+.lyric span{display:block;font-family:var(--v1-script)!important;font-style:italic;font-size:17px!important;line-height:1.25;color:#55507a!important}
+.lyric time{display:block;text-align:right;font-family:var(--v1-round);font-size:10px!important;letter-spacing:.08em;color:#79a7d9!important;margin-top:4px}
+/* icons */
+.app .icon-face{background:#fff!important;border-radius:50%!important;box-shadow:0 6px 14px rgba(120,110,170,.18)!important;color:#6f6a96!important}
+.label{font-family:var(--v1-round);font-size:11px!important;color:#6a6690!important}
+/* clock */
+.clock{position:relative;display:block!important;padding:18px 16px!important}
+.clock .time{font-family:var(--v1-script)!important;font-weight:600;font-size:44px!important;letter-spacing:.02em;color:#3d3860!important;line-height:1}
+.clock .day{color:#79a7d9!important;font-size:13px!important;font-weight:700}.clock .dot{display:none}
+.clock .who{position:absolute;top:14px;right:12px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.clock .avatar{width:38px!important;height:38px!important;border:3px solid #fff;background:radial-gradient(circle at 50% 60%,#f5e9f5 0 30%,#b9a7de 32% 60%,#8f86c8 62%)!important}
+.clock .handle{font-size:11px!important;font-weight:600;color:#6a6690!important}
+.clock .hero-title{position:absolute;left:16px;bottom:16px;font-family:var(--v1-script)!important;font-style:italic;font-size:19px!important;color:#55507a!important;margin:0}
+/* player */
+.player{display:flex!important;flex-direction:column;align-items:center;padding:14px!important;text-align:center}
+.player .album{width:74%!important;aspect-ratio:1;height:auto!important;flex:none;border-radius:22px!important;display:grid;place-items:center;background:linear-gradient(145deg,#b7a9e0,#8f9ad6 60%,#7f8fcf)!important;color:#fff}
+.player-meta{width:100%;margin-top:10px}
+.player .song-sub{font-size:9px!important;letter-spacing:.14em;font-weight:700;color:#79a7d9!important}
+.player .song{font-family:var(--v1-round)!important;font-weight:700;font-size:16px!important;color:#3d3860!important}
+/* dock */
+.dock{border-radius:30px!important;align-items:center}
+.dock .app{display:flex;flex-direction:column;align-items:center;gap:3px;height:auto!important;width:56px!important}
+.dock .icon-face{width:44px!important;height:44px!important}

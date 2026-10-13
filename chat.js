@@ -2,7 +2,7 @@
   "use strict";
 
   var KEY = "qiuq-chat";
-  var REACTIONS = ["❤️", "👍", "😂", "😮", "😢"];
+  var REACTIONS = ["❤️", "👍", "😹", "😮", "😢"];
   var LONG_MS = 480;
 
   var messages = [];
