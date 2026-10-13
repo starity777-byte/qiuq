@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>QiuQ 小手机</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M4.7 8.4h8.8c1.15 0 2 .9 2 2.05v3.15c0 1.15-.85 2.05-2 2.05H8.8L6.5 18.1v-2.45H4.7c-1.15 0-2-.9-2-2.05v-3.15c0-1.15.85-2.05 2-2.05z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M16.15 3.55c-.48 0-.9.22-1.15.58-.26-.36-.68-.58-1.16-.58-.95 0-1.64.78-1.64 1.72 0 1.48 2.8 3.02 2.8 3.02s2.8-1.54 2.8-3.02c0-.94-.7-1.72-1.65-1.72z" fill="#79a7d9"/>
+    </symbol>
+    <symbol id="i-find" viewBox="0 0 24 24">
+      <rect x="5" y="3.2" width="9.6" height="16.2" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M7.7 6.1h4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="15.9" cy="15.35" r="2.7" fill="none" stroke="#79a7d9" stroke-width="1.6"/>
+      <path d="M17.9 17.35l2 2" fill="none" stroke="#79a7d9" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24">
+      <path d="M7.1 9.5h9.8l-.75 8.15a1.55 1.55 0 0 1-1.55 1.35H9.4a1.55 1.55 0 0 1-1.55-1.35L7.1 9.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.35 9.5V8.15a2.65 2.65 0 0 1 5.3 0V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M10.15 13.45c.62.7 1.25 1.05 1.85 1.05s1.23-.35 1.85-1.05" fill="none" stroke="#79a7d9" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-music" viewBox="0 0 24 24">
+      <path d="M9.15 17.15V6.15l8.7-1.65v8.85" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6.7" cy="17.15" r="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="15.55" cy="13.45" r="2.2" fill="none" stroke="#79a7d9" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M12 7.15c-1.85-1.25-4.15-1.7-6.7-1.2v11.15c2.45-.5 4.75 0 6.7 1.5 1.95-1.5 4.25-2 6.7-1.5V5.95c-2.55-.5-4.85-.05-6.7 1.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 7.35v11.15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M7.2 7.2l9.6 9.6M16.8 7.2 7.2 16.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-paint" viewBox="0 0 24 24">
+      <path d="M14.7 4.7c1.15.85 2.35 2.15 3.15 3.35L9.7 16.15c-.8.8-2.15.95-2.95.2-.85-.75-.7-2.15.15-2.95L14.7 4.7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      <path d="M13.45 6.35l3.25 2.85" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="7.55" cy="17.7" r="1.2" fill="#79a7d9"/>
+    </symbol>
+    <symbol id="i-pay" viewBox="0 0 24 24">
+      <rect x="3.5" y="6.3" width="17" height="11.4" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M3.5 10.05h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M15.15 12.35c-.32 0-.58.16-.78.42-.2-.26-.46-.42-.78-.42-.62 0-1.07.5-1.07 1.12 0 .98 1.85 2 1.85 2s1.85-1.02 1.85-2c0-.62-.45-1.12-1.07-1.12z" fill="#79a7d9"/>
+    </symbol>
+    <symbol id="i-hold" viewBox="0 0 24 24">
+      <path d="M12 15.2s-3.9-2.35-3.9-4.7a2.15 2.15 0 0 1 3.9-.95 2.15 2.15 0 0 1 3.9.95c0 2.35-3.9 4.7-3.9 4.7z" fill="none" stroke="#79a7d9" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M4.7 13.4c.35 1.7 1.15 3.3 2.6 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M19.3 13.4c-.35 1.7-1.15 3.3-2.6 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-more" viewBox="0 0 24 24">
+      <circle cx="8" cy="8" r="1.45" fill="currentColor"/>
+      <circle cx="16" cy="8" r="1.45" fill="currentColor"/>
+      <circle cx="8" cy="16" r="1.45" fill="currentColor"/>
+      <circle cx="16" cy="16" r="1.45" fill="#79a7d9"/>
+    </symbol>
+  </svg>
+
+  <div class="glow" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+    <span class="blob blob-d"></span>
+  </div>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot-lockup">
+      <span class="boot-aura"></span>
+      <p class="boot-logo">QiuQ</p>
+      <p class="boot-sub">小手机</p>
+    </div>
+  </div>
+
+  <main class="screen">
+    <h1 class="sr-only">QiuQ 小手机</h1>
+    <span class="edge edge-l rise" style="--i:0" aria-hidden="true">✦</span>
+    <span class="edge edge-r rise" style="--i:1" aria-hidden="true">♪</span>
+
+    <section class="top" data-home>
+      <article class="photo rise" style="--i:0" role="img" aria-label="Photo">
+        <span class="spark spark-note" aria-hidden="true">♪</span>
+        <span class="spark spark-star" aria-hidden="true">✦</span>
+        <span class="chip">for you</span>
+      </article>
+      <article class="lyrics glass rise" style="--i:1" aria-label="Lyrics">
+        <div class="pills">
+          <span class="pill">♪</span>
+          <span class="pill">lyric</span>
+          <span class="pill">♡</span>
+        </div>
+        <div class="lyric-list">
+          <p class="lyric"><time datetime="03-14">03.14</time><span>meet me in rain</span></p>
+          <p class="lyric"><time datetime="06-02">06.02</time><span>hold me closer</span></p>
+          <p class="lyric"><time datetime="09-18">09.18</time><span>i choose you</span></p>
+          <p class="lyric"><time datetime="12-24">12.24</time><span>stay the night</span></p>
+        </div>
+      </article>
+    </section>
+
+    <nav class="apps" data-home aria-label="Apps">
+      <button class="app rise" type="button" data-app="Chat" style="--i:2">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg></span>
+        <span class="label">Chat</span>
+      </button>
+      <button class="app rise" type="button" data-app="查手机" style="--i:3">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-find"/></svg></span>
+        <span class="label">查手机</span>
+      </button>
+      <button class="app rise" type="button" data-app="Meituan" style="--i:4">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bag"/></svg></span>
+        <span class="label">Meituan</span>
+      </button>
+      <button class="app rise" type="button" data-app="Music" style="--i:5">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-music"/></svg></span>
+        <span class="label">Music</span>
+      </button>
+      <button class="app rise" type="button" data-app="世界书" style="--i:6">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg></span>
+        <span class="label">世界书</span>
+      </button>
+      <button class="app rise" type="button" data-app="X" style="--i:7">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></span>
+        <span class="label">X</span>
+      </button>
+      <button class="app rise" type="button" data-app="Paint" style="--i:8">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paint"/></svg></span>
+        <span class="label">Paint</span>
+      </button>
+      <button class="app rise" type="button" data-app="Pay" style="--i:9">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pay"/></svg></span>
+        <span class="label">Pay</span>
+      </button>
+      <button class="app rise" type="button" data-app="Hold" style="--i:10">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-hold"/></svg></span>
+        <span class="label">Hold</span>
+      </button>
+      <button class="app rise" type="button" data-app="More" style="--i:11">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-more"/></svg></span>
+        <span class="label">More</span>
+      </button>
+    </nav>
+
+    <section class="widgets" data-home>
+      <article class="clock glass rise" style="--i:12" aria-label="Clock">
+        <div class="clock-top">
+          <p class="time">01:40</p>
+          <p class="day"><span class="dot" aria-hidden="true"></span>Monday</p>
+        </div>
+        <p class="hero-title">Little Universe<span class="twinkle" aria-hidden="true">✦</span></p>
+        <div class="who">
+          <div class="avatar" role="img" aria-label="Coconut"></div>
+          <p class="handle">@Coconut</p>
+        </div>
+      </article>
+      <article class="player glass rise" style="--i:13" aria-label="Love Songg">
+        <div class="album" role="img" aria-label="Love Songg album">
+          <span class="play" aria-hidden="true">
+            <svg viewBox="0 0 12 12" width="11" height="11"><path d="M4.1 2.4v7.2l5.2-3.6z" fill="currentColor"/></svg>
+          </span>
+        </div>
+        <div class="player-meta">
+          <p class="song">Love Songg</p>
+          <p class="song-sub">♪ for Coconut</p>
+          <div class="track" aria-hidden="true"><i></i></div>
+        </div>
+      </article>
+    </section>
+
+    <nav class="dock glass rise" data-home style="--i:14" aria-label="Dock">
+      <button class="app" type="button" data-app="Chat" aria-label="Chat">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg></span>
+      </button>
+      <button class="app" type="button" data-app="Music" aria-label="Music">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-music"/></svg></span>
+      </button>
+      <button class="app" type="button" data-app="Paint" aria-label="Paint">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paint"/></svg></span>
+      </button>
+      <button class="app" type="button" data-app="Pay" aria-label="Pay">
+        <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pay"/></svg></span>
+      </button>
+    </nav>
+
+    <div class="sheet-layer" id="sheetLayer" hidden>
+      <button class="sheet-backdrop" type="button" aria-label="Close"></button>
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+        <div class="grip" aria-hidden="true"></div>
+        <div class="sheet-head">
+          <div class="icon-face sheet-face" id="sheetIcon" aria-hidden="true"></div>
+          <h2 id="sheetTitle">App</h2>
+        </div>
+        <p id="sheetBlurb"></p>
+        <button class="close-btn" type="button" id="sheetClose">Close</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
