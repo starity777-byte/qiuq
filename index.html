@@ -7,6 +7,7 @@
   <title>QiuQ 小手机</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="drag.css">
 </head>
 <body>
   <script src="glass.js"></script>
@@ -95,12 +96,12 @@
         <span class="glass-switch-word" data-light aria-hidden="true">Light</span>
         <span class="glass-switch-word" data-night aria-hidden="true">Night</span>
       </button>
-      <article class="photo rise" style="--i:0" role="img" aria-label="Photo">
+      <article class="photo rise" style="--i:0" role="img" aria-label="Photo" data-id="photo">
         <span class="spark spark-note" aria-hidden="true">♪</span>
         <span class="spark spark-star" aria-hidden="true">✦</span>
         <span class="chip">for you</span>
       </article>
-      <article class="lyrics glass rise" style="--i:1" aria-label="Lyrics">
+      <article class="lyrics glass rise" style="--i:1" aria-label="Lyrics" data-id="lyrics">
         <div class="pills">
           <span class="pill">♪</span>
           <span class="pill">lyric</span>
@@ -116,50 +117,50 @@
     </section>
 
     <nav class="apps" data-home aria-label="Apps">
-      <button class="app rise" type="button" data-app="Chat" style="--i:2">
+      <button class="app rise" type="button" data-app="Chat" style="--i:2" data-id="app-chat">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg></span>
         <span class="label">Chat</span>
       </button>
-      <button class="app rise" type="button" data-app="查手机" style="--i:3">
+      <button class="app rise" type="button" data-app="查手机" style="--i:3" data-id="app-find">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-find"/></svg></span>
         <span class="label">查手机</span>
       </button>
-      <button class="app rise" type="button" data-app="Meituan" style="--i:4">
+      <button class="app rise" type="button" data-app="Meituan" style="--i:4" data-id="app-meituan">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-bag"/></svg></span>
         <span class="label">Meituan</span>
       </button>
-      <button class="app rise" type="button" data-app="Music" style="--i:5">
+      <button class="app rise" type="button" data-app="Music" style="--i:5" data-id="app-music">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-music"/></svg></span>
         <span class="label">Music</span>
       </button>
-      <button class="app rise" type="button" data-app="世界书" style="--i:6">
+      <button class="app rise" type="button" data-app="世界书" style="--i:6" data-id="app-book">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg></span>
         <span class="label">世界书</span>
       </button>
-      <button class="app rise" type="button" data-app="X" style="--i:7">
+      <button class="app rise" type="button" data-app="X" style="--i:7" data-id="app-x">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-x"/></svg></span>
         <span class="label">X</span>
       </button>
-      <button class="app rise" type="button" data-app="Paint" style="--i:8">
+      <button class="app rise" type="button" data-app="Paint" style="--i:8" data-id="app-paint">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paint"/></svg></span>
         <span class="label">Paint</span>
       </button>
-      <button class="app rise" type="button" data-app="Pay" style="--i:9">
+      <button class="app rise" type="button" data-app="Pay" style="--i:9" data-id="app-pay">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pay"/></svg></span>
         <span class="label">Pay</span>
       </button>
-      <button class="app rise" type="button" data-app="Hold" style="--i:10">
+      <button class="app rise" type="button" data-app="Hold" style="--i:10" data-id="app-hold">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-hold"/></svg></span>
         <span class="label">Hold</span>
       </button>
-      <button class="app rise" type="button" data-app="More" style="--i:11">
+      <button class="app rise" type="button" data-app="More" style="--i:11" data-id="app-more">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-more"/></svg></span>
         <span class="label">More</span>
       </button>
     </nav>
 
     <section class="widgets" data-home>
-      <article class="clock glass rise" style="--i:12" aria-label="Clock">
+      <article class="clock glass rise" style="--i:12" aria-label="Clock" data-id="clock">
         <div class="clock-top">
           <p class="time">01:40</p>
           <p class="day"><span class="dot" aria-hidden="true"></span>Monday</p>
@@ -170,7 +171,7 @@
           <p class="handle">@Coconut</p>
         </div>
       </article>
-      <article class="player glass rise" style="--i:13" aria-label="Love Songg">
+      <article class="player glass rise" style="--i:13" aria-label="Love Songg" data-id="player">
         <div class="album" role="img" aria-label="Love Songg album">
           <span class="play" aria-hidden="true">
             <svg viewBox="0 0 12 12" width="11" height="11"><path d="M4.1 2.4v7.2l5.2-3.6z" fill="currentColor"/></svg>
@@ -185,16 +186,16 @@
     </section>
 
     <nav class="dock glass rise" data-home style="--i:14" aria-label="Dock">
-      <button class="app" type="button" data-app="Chat" aria-label="Chat">
+      <button class="app" type="button" data-app="Chat" aria-label="Chat" data-id="dock-chat">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg></span>
       </button>
-      <button class="app" type="button" data-app="Music" aria-label="Music">
+      <button class="app" type="button" data-app="Music" aria-label="Music" data-id="dock-music">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-music"/></svg></span>
       </button>
-      <button class="app" type="button" data-app="Paint" aria-label="Paint">
+      <button class="app" type="button" data-app="Paint" aria-label="Paint" data-id="dock-paint">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-paint"/></svg></span>
       </button>
-      <button class="app" type="button" data-app="Pay" aria-label="Pay">
+      <button class="app" type="button" data-app="Pay" aria-label="Pay" data-id="dock-pay">
         <span class="icon-face"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pay"/></svg></span>
       </button>
     </nav>
@@ -214,5 +215,6 @@
   </main>
 
   <script src="app.js"></script>
+  <script src="drag.js"></script>
 </body>
 </html>
