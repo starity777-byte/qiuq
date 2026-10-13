@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light">
   <title>QiuQ 小手机</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#e2dbed">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="QiuQ">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" href="icons/icon-192.png">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="glass.css">
   <link rel="stylesheet" href="drag.css">
@@ -219,5 +227,12 @@
   <script src="app.js"></script>
   <script src="drag.js"></script>
   <script src="chat.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  </script>
 </body>
 </html>
