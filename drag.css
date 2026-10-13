@@ -182,3 +182,6 @@ body.is-editing .qiuq-widget > .qiuq-handle {
     animation: none;
   }
 }
+
+/* glue */
+body.is-editing .glass-switch{opacity:0;pointer-events:none}
