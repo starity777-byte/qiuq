@@ -470,3 +470,6 @@ body.glass-night .glass-refract {
     transition: none;
   }
 }
+
+/* glue: night wallpaper */
+body.glass-night { background: linear-gradient(rgba(20,16,40,.25),rgba(20,16,40,.35)), url("assets/wallpaper_night.jpg") center/cover no-repeat; background-color:#1d1830; }
