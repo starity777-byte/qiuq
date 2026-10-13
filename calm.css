@@ -1,0 +1,294 @@
+/* calm.css — quieter QiuQ.
+   Loaded last. Two jobs:
+   1) Layout that adapts to short screens (browser bars eat height on real phones).
+   2) Hairline surfaces: borders present but quiet; no gloss, rims or refraction.
+   Remove the <link> to calm.css in index.html to get the old look back. */
+
+:root {
+  --hairline: rgba(110, 100, 150, 0.18);
+  --hairline-soft: rgba(110, 100, 150, 0.12);
+  --surface: rgba(255, 255, 255, 0.42);
+  --surface-icon: rgba(255, 255, 255, 0.5);
+  --soft-drop: 0 6px 20px rgba(90, 80, 140, 0.08);
+  --icon: clamp(40px, 5.6vh, 46px);
+  --gap: clamp(8px, 1.3vh, 12px);
+}
+
+body.glass-night {
+  --hairline: rgba(255, 255, 255, 0.14);
+  --hairline-soft: rgba(255, 255, 255, 0.09);
+  --surface: rgba(30, 24, 58, 0.42);
+  --surface-icon: rgba(255, 255, 255, 0.06);
+  --soft-drop: 0 8px 24px rgba(4, 2, 12, 0.28);
+}
+
+/* High-DPI phones: a true hairline. */
+:root { --hw: 1px; }
+@media (min-resolution: 2dppx) {
+  :root { --hw: 0.5px; }
+}
+
+/* ---------- 1. Layout ---------- */
+
+.screen {
+  /* Icons and dock take what they need; photo/lyrics and widgets share the rest. */
+  grid-template-rows: minmax(0, 268fr) auto minmax(0, 294fr) auto;
+  gap: var(--gap);
+  padding-top: clamp(48px, 7vh, 56px);
+}
+
+.apps {
+  grid-template-rows: auto auto;
+  row-gap: clamp(8px, 1.6vh, 16px);
+  padding: 2px 0;
+}
+
+.app {
+  gap: 5px;
+}
+
+.icon-face {
+  width: var(--icon);
+  height: var(--icon);
+}
+
+.ico {
+  width: calc(var(--icon) * 0.5);
+  height: calc(var(--icon) * 0.5);
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  height: 14px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-shadow: none;
+}
+
+.dock {
+  height: clamp(58px, 8.2vh, 70px);
+}
+
+.dock .app,
+.dock .icon-face {
+  width: var(--icon);
+  height: var(--icon);
+}
+
+.time {
+  font-size: clamp(38px, 6vh, 50px);
+  font-weight: 300;
+}
+
+.hero-title {
+  font-size: clamp(22px, 3.6vh, 30px);
+}
+
+.avatar {
+  width: clamp(32px, 4.6vh, 40px);
+  height: clamp(32px, 4.6vh, 40px);
+}
+
+/* ---------- 2. Hairline surfaces ---------- */
+
+/* Cards: one quiet border, one soft shadow, plain frost. */
+.glass,
+body.glass-night .glass,
+.glass.glass-refract,
+body.glass-night .glass.glass-refract {
+  background: var(--surface);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: var(--soft-drop);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+
+body.glass-night .glass,
+body.glass-night .glass.glass-refract {
+  -webkit-backdrop-filter: blur(20px) saturate(1.1) brightness(0.85);
+  backdrop-filter: blur(20px) saturate(1.1) brightness(0.85);
+}
+
+/* No gradient rims or top gloss. */
+.glass::before,
+.glass::after,
+.icon-face::before,
+.glass-switch::before,
+.glass-switch-knob::after {
+  display: none;
+}
+
+/* The photo card gets the same quiet edge. */
+.photo {
+  box-shadow: inset 0 0 0 var(--hw) var(--hairline), var(--soft-drop);
+}
+
+.album {
+  box-shadow: inset 0 0 0 var(--hw) var(--hairline-soft);
+}
+
+/* Icons: flat, light, hairline. */
+.icon-face,
+body.glass-night .icon-face,
+.icon-face.glass-refract,
+body.glass-night .icon-face.glass-refract {
+  background: var(--surface-icon);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.app:active .icon-face,
+.app.is-pressed .icon-face,
+body.glass-night .app:active .icon-face {
+  box-shadow: none;
+}
+
+/* Small capsules. */
+.pill,
+.chip,
+.play,
+.close-btn,
+body.glass-night .pill,
+body.glass-night .play,
+body.glass-night .close-btn {
+  background: var(--surface-icon);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: none;
+}
+
+.chip,
+body.glass-night .chip {
+  background: rgba(255, 255, 255, 0.55);
+  border: var(--hw) solid rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+  color: #3f3958;
+}
+
+/* Theme switch and knob. */
+.glass-switch,
+body.glass-night .glass-switch,
+.glass-switch.glass-refract,
+body.glass-night .glass-switch.glass-refract {
+  background: var(--surface);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.glass-switch-knob,
+body.glass-night .glass-switch-knob {
+  background: rgba(255, 255, 255, 0.92);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: 0 2px 6px rgba(90, 80, 140, 0.14);
+}
+
+.glass-switch-word {
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- 3. Fewer voices ---------- */
+
+/* One sparkle stays (beside Little Universe). */
+.edge,
+.spark {
+  display: none;
+}
+
+.twinkle {
+  text-shadow: none;
+  opacity: 0.8;
+}
+
+.dot {
+  box-shadow: none;
+}
+
+/* Lyric rule thinner and softer. */
+.lyric {
+  border-left: 1px solid var(--hairline);
+}
+
+body.glass-night .lyric {
+  border-left-color: rgba(255, 255, 255, 0.22);
+}
+
+.lyric time {
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+/* Two families only: serif italic for words with feeling, sans for the rest.
+   Bold steps down so nothing shouts. */
+.day {
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.handle {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.song {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.avatar {
+  box-shadow: 0 0 0 var(--hw) var(--hairline);
+}
+
+.track {
+  height: 2px;
+}
+
+/* Calmer background: dim the drifting colour blobs. */
+.blob {
+  opacity: 0.25 !important;
+}
+
+/* Light mode: a soft mist over the wallpaper so labels stay readable. */
+body:not(.glass-night)::after {
+  background: linear-gradient(rgba(242, 238, 250, 0.32), rgba(236, 232, 248, 0.26));
+}
+
+body:not(.glass-night) .label {
+  color: var(--ink);
+  opacity: 0.78;
+}
+
+body.glass-night .glass-switch-knob {
+  background: rgba(236, 232, 248, 0.9);
+}
+
+/* Edit button matches the hairline capsules. */
+.qiuq-tools button {
+  background: rgba(255, 255, 255, 0.6);
+  border: var(--hw) solid var(--hairline);
+  box-shadow: none;
+  font-weight: 500;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+body.glass-night .qiuq-tools button {
+  background: rgba(30, 24, 58, 0.5);
+  color: #f6f3fc;
+}
+
+/* Very short screens: drop the lyric pills so all four lines fit. */
+@media (max-height: 700px) {
+  .lyrics .pills { display: none; }
+  .lyric-list { margin-top: 0; }
+  .lyric span { font-size: 12px; }
+}
